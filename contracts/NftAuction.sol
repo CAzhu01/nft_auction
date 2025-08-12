@@ -25,6 +25,12 @@ contract NftAuction {
         // 最高出价
         uint256 highestBid;
         bool ended;
+
+        // NFT合约地址
+        address nftContractAddress;
+
+        // NFT tokenId
+        uint256 tokenId;
     }
 
     // 状态变量
@@ -38,7 +44,7 @@ contract NftAuction {
     }
  
     // 创建拍卖 
-    function createAuction(uint _duration, uint _startingPrice) public { 
+    function createAuction(uint _duration, uint _startingPrice, address _nftContractAddress, uint256 _tokenId) public { 
         // 管理员权限
         require(msg.sender == admin, "Only admin can create auction");
 
@@ -56,7 +62,9 @@ contract NftAuction {
             endingPrice: _startingPrice,
             highestBidder: address(0),
             highestBid: 0,
-            ended: false
+            ended: false,
+            nftContractAddress: _nftContractAddress,
+            tokenId: _tokenId
         });
         nextAuction++;
     }
