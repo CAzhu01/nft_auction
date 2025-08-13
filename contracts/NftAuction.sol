@@ -5,6 +5,8 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 
+import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
+
 contract NftAuction is Initializable, UUPSUpgradeable {
 
     // 定义结构体
@@ -57,6 +59,12 @@ contract NftAuction is Initializable, UUPSUpgradeable {
         require(_duration > 1000 * 60, "Duration must be greater than 0");
         require(_startingPrice > 0, "Starting price must be greater than 0");
 
+        // 转移NFT
+        IERC721(_nftContractAddress).approve(address(this), _tokenId);
+        // IERC721(_nftContractAddress).safeTransferFrom(msg.sender, address(this), _tokenId);
+
+
+
         auctions[nextAuction] = Auction({
             nftAddress: msg.sender,
             duration: _duration,
@@ -95,6 +103,24 @@ contract NftAuction is Initializable, UUPSUpgradeable {
         auction.endingPrice = msg.value;
         // 
     } 
+
+// 拍卖结束
+    function endAuction(uint _auctionId)internal returns (bool) {
+    Auction storage auction = auctions[_auctionId];
+    // 拍卖是否结束
+    require(!auction.ended, "Auction already ended");
+    // 拍卖是否结束
+    require(block.timestamp >= auction.endTime, "Auction not ended yet");
+    // 转移NFT到最高出价者
+    IERC721(auction.nftContractAddress).safeTransferFrom(address(this), auction.highestBidder, auction.tokenId);
+    // 转移剩余的资金到卖家
+    payable(auction.seller).transfer(address(this).balance);
+    
+    // 标记为已结束
+    auction.ended = true;
+}
+
+
 
     function _authorizeUpgrade(address newImplementation) internal view override {
         require(msg.sender == admin, "Only admin can upgrade");
