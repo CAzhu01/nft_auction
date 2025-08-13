@@ -1,1 +1,25 @@
-{"proxyAddress":"0xafc305E491CC8A89E355C0114b8C77Dfd7d39029","implementationAddress":"0xF8829c9cFe084892feB2160555c7EE4d3e7ae2C1","abi":["error AddressEmptyCode(address)","error ERC1967InvalidImplementation(address)","error ERC1967NonPayable()","error FailedCall()","error InvalidInitialization()","error NotInitializing()","error UUPSUnauthorizedCallContext()","error UUPSUnsupportedProxiableUUID(bytes32)","event Initialized(uint64)","event Upgraded(address indexed)","function UPGRADE_INTERFACE_VERSION() view returns (string)","function admin() view returns (address)","function auctions(uint256) view returns (address,uint256,address,uint256,uint256,uint256,uint256,address,uint256,bool,address,uint256)","function createAuction(uint256,uint256,address,uint256)","function initialize()","function nextAuction() view returns (uint256)","function placeBid(uint256) payable","function proxiableUUID() view returns (bytes32)","function upgradeToAndCall(address,bytes) payable"]}
+{
+  "proxyAddress": "0xafc305E491CC8A89E355C0114b8C77Dfd7d39029",
+  "implementationAddress": "0xF8829c9cFe084892feB2160555c7EE4d3e7ae2C1",
+  "abi": [
+    "error AddressEmptyCode(address)",
+    "error ERC1967InvalidImplementation(address)",
+    "error ERC1967NonPayable()",
+    "error FailedCall()",
+    "error InvalidInitialization()",
+    "error NotInitializing()",
+    "error UUPSUnauthorizedCallContext()",
+    "error UUPSUnsupportedProxiableUUID(bytes32)",
+    "event Initialized(uint64)",
+    "event Upgraded(address indexed)",
+    "function UPGRADE_INTERFACE_VERSION() view returns (string)",
+    "function admin() view returns (address)",
+    "function auctions(uint256) view returns (address,uint256,address,uint256,uint256,uint256,uint256,address,uint256,bool,address,uint256)",
+    "function createAuction(uint256,uint256,address,uint256)",
+    "function initialize()",
+    "function nextAuction() view returns (uint256)",
+    "function placeBid(uint256) payable",
+    "function proxiableUUID() view returns (bytes32)",
+    "function upgradeToAndCall(address,bytes) payable"
+  ]
+}
