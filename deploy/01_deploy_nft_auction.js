@@ -63,4 +63,4 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
 // 这里的标签名可以自定义，这里的标签名是 NftAuction。
 // 给部署脚本添加网络标签，方便 Hardhat 按网络选择性运行脚本。
 // module.exports.networks = ["hardhat", "localhost", "goerli"];
-module.exports.tags = ["NftAuction"];
+module.exports.tags = ["deployNftAuction"];
