@@ -9,7 +9,8 @@
     "function createAuction(uint256,uint256,address,uint256)",
     "function initialize()",
     "function nextAuction() view returns (uint256)",
-    "function placeBid(uint256) payable"
+    "function placeBid(uint256) payable",
+    "function testHello() pure returns (string)"
   ],
   "numDeployments": 1
 }

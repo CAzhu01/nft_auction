@@ -1,4 +1,6 @@
 const { upgrades, ethers } = require("hardhat");
+const fs = require("fs");
+const path = require("path");
 
 module.exports = async function ({ getNamedAccounts, deployments }) {
   const { save } = deployments;
@@ -15,7 +17,7 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
   const { proxyAddress, implAddress, abi } = JSON.parse(storeData);
 
   //   升级工厂合约
-  const NftAuctionV2 = await ethers.getContractFactory("nftAuctionV2");
+  const NftAuctionV2 = await ethers.getContractFactory("NftAuctionV2");
 
   //   升级合约
   const nftAuctionV2 = await upgrades.upgradeProxy(proxyAddress, NftAuctionV2);
@@ -35,3 +37,5 @@ module.exports = async function ({ getNamedAccounts, deployments }) {
     abi: nftAuctionV2.interface.format("json"),
   });
 };
+
+module.exports.tags = ["upgradeNftAuction"];
