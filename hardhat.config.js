@@ -1,4 +1,6 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("hardhat-deploy");
+require("@openzeppelin/hardhat-upgrades");
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -15,6 +17,14 @@ module.exports = {
       accounts: [
         "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80",
       ],
+    },
+  },
+  namedAccounts: {
+    deployer: {
+      default: 0,
+      user1: 1,
+      user2: 2,
+      user3: 3,
     },
   },
 };
