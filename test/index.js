@@ -1,7 +1,7 @@
 const { ethers } = require("hardhat");
 const { expect } = require("chai");
 
-describe("NftAuction", async function () {
+describe("Test upgrade", async function () {
   it("should create an auction", async function () {
     const Contract = await ethers.getContractFactory("NftAuction");
     const contract = await Contract.deploy();
